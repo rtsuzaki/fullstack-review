@@ -14,8 +14,19 @@ class App extends React.Component {
   }
 
   search (term) {
-    console.log(`${term} was searched`);
     // TODO
+    //Send a AJAX POST request to your express server
+    console.log('search click')
+    $.ajax({
+      type: "POST",
+      url: '/repos',
+      data: term,
+      success: console.log(`${term} was searched`),
+      dataType: 'json',
+    });
+
+    //update state with repos in success
+    
   }
 
   render () {
