@@ -13,6 +13,17 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    $.ajax({
+      type: "GET",
+      url: '/repos',
+      success: (data)=>console.log(data),
+      dataType: 'json',
+    });
+
+    //update state with repos from database.
+  }
+
   search (term) {
     // TODO
     //Send a AJAX POST request to your express server
@@ -24,8 +35,6 @@ class App extends React.Component {
       success: console.log(`${term} was searched`),
       dataType: 'json',
     });
-
-    //update state with repos in success
     
   }
 
