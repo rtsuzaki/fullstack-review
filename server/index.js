@@ -21,7 +21,6 @@ app.post('/repos', function (req, res) {
 
   let query = (Object.keys(req.body)[0])
   console.log('query',query)
-  // let cb = (searchResult) => console.log('-----APP POST',searchResult)
   let usersRepos = searchGithub.getReposByUsername(query,db.save)
   
 });
@@ -30,9 +29,8 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  let log = (blah)=> console.log('------YOOOOOOOO', blah);
+  let log = (blah)=> res.send(blah);
   db.fetch('repos',log)
-  res.send('hi')
 });
 
 let port = 1128;

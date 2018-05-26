@@ -8,19 +8,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      repos: []
+      repos: [],
+      displayedRepos:[],
     }
-
   }
 
   componentDidMount() {
     $.ajax({
       type: "GET",
       url: '/repos',
-      success: (data)=>console.log(data),
+      success: (data)=> {
+      let top25= data.slice(0,25);
+      this.setState({repos:data, displayedRepos:top25})
+      },
       dataType: 'json',
     });
 
+    
     //update state with repos from database.
   }
 
@@ -41,7 +45,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
+      <RepoList repos={this.state.repos} displayedRepos={this.state.displayedRepos}/>
       <Search onSearch={this.search.bind(this)}/>
     </div>)
   }
