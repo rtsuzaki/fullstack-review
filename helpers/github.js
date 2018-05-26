@@ -20,7 +20,7 @@ let getReposByUsername = (query,cb) => {
         console.log('ERROR')
       } else {
         let json = JSON.parse(body);
-        console.log('-------->repo search results',json);
+        // console.log('-------->repo search results',json);
         cb(json)
       }
   });

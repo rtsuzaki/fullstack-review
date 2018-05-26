@@ -34,12 +34,12 @@ let save = (repoArray) => {
   })
 }
 
-let find = (name) => {
+let fetch = (name,cb) => {
     mongoose.connection.db.collection(name, function (err, collection) {
-       console.log('--------FIND!!!!!!!',collection.find());
+       cb(db.collection.find()[0]);
    });
 }
   
 
 module.exports.save = save;
-module.exports.find = find;
+module.exports.fetch = fetch;
